@@ -2,11 +2,13 @@ const express = require('express');
 const db = require('../data/db.js');
 
 const configureMiddleware = require('./middleware.js');
-const productRouter = require('../products/productRouter.js');
+const productRoutes = require('../products/productRouter.js');
 
 const server = express();
 
 configureMiddleware(server);
+
+server.use('/products', productRoutes);
 
 server.get('/', (req, res) => {
   res.send('Hello there');
